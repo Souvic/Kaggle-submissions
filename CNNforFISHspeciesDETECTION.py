@@ -15,7 +15,7 @@ import math
 batch_size = 32
 nb_classes = 8
 nb_epoch = 20
-numimages=150
+numimages=1000
 # input image dimensions
 img_rows, img_cols = 512, 512
 # number of convolutional filters to use
@@ -37,8 +37,8 @@ image7 = listFiles('/home/chaksouv1008/Desktop/kaggle/train/SHARK/','.jpg')
 image8 = listFiles('/home/chaksouv1008/Desktop/kaggle/train/YFT/','.jpg')
 def load_data(image):
   result=np.zeros((1,img_rows,img_cols))
-  b=math.floor(len(image)/10)
-  image=image[:int(b)]
+  #b=math.floor(len(image)/10)
+  #image=image[:int(b)]
   for i in range(0,len(image)):
     p=str(i) + "/" + str(len(image))
     print(p)
@@ -125,7 +125,7 @@ model.add(MaxPooling2D(pool_size=pool_size))
 model.add(Dropout(0.25))
 
 model.add(Flatten())
-model.add(Dense(64))
+model.add(Dense(512))
 model.add(Activation('relu'))
 model.add(Dropout(0.3))
 model.add(Dense(nb_classes))
